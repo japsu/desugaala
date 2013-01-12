@@ -1,0 +1,17 @@
+doctype 5
+html
+  head
+    title Hello, World!
+    link(rel='stylesheet', href='{{ STATIC_URL }}css/bootstrap.min.css')
+    link(rel='stylesheet', href='{{ STATIC_URL }}css/desugaala.css')
+
+  body
+    div.navbar.navbar-inverse.navbar-fixed-top
+      div.navbar-inner
+        div.container
+          span.brand DesuGaala 2012   
+          ul.nav
+            li: a(href='http://desucon.fi/frostbite') Takaisin Desucon Frostbiten sivuille
+    
+    div.container.content
+      block content
