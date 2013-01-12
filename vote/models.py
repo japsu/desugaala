@@ -8,7 +8,8 @@ class Option(models.Model):
     category = models.ForeignKey(Category)
 
 class Ballot(models.Model):
-    pass
+    user_agent = models.CharField(max_length=256)
+    timestamp = models.DateTimeField()
 
 class BallotOption(models.Model):
     order = models.IntegerField()
@@ -16,5 +17,5 @@ class BallotOption(models.Model):
     option = models.ForeignKey(Option)
 
 class AlreadyVoted(models.Model):
-    username = models.CharField(max_length=128)
+    userid = models.IntegerField(unique=True)
 

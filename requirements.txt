@@ -1,4 +1,4 @@
 Django==1.4.3
 python-vote-core==20120423.0
 gunicorn==0.17.2
-
+South==0.7.6
