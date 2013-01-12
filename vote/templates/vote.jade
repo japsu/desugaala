@@ -27,8 +27,11 @@ block content
   for category in categories
     h3 {{ category.title }}
     ul.options(data-category='{{ category.id }}')
-      li.deadline Nosta kaikki suosikkisi paremmuusjärjestyksessä tämän linjan yläpuolelle!
+      li.deadline
+        span.ui-icon.ui-icon-arrowthick-2-n-s
+        span.text Nosta kaikki suosikkisi paremmuusjärjestyksessä tämän linjan yläpuolelle!
       for option in category.option_set.all
-        li {{ option.title }}
-
+        li
+          span.ui-icon.ui-icon-arrowthick-2-n-s
+          span.text {{ option.title }}
   h2 Lähetä

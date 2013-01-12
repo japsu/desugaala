@@ -1,0 +1,2 @@
+$ ->
+  $('.options').sortable().disableSelection()

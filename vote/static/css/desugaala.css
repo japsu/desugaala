@@ -1,3 +1,39 @@
 .content {
+
   margin-top: 60px;
+}
+
+.options {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  width: 60%;
+}
+
+.options li {
+  background-color: #eee;
+  margin: 0 3px 3px 3px;
+  padding: 0.4em;
+  padding-left: 1.5em;
+  height: 18px;
+}
+
+.options li:hover {
+  background-color: #eef;
+}
+
+.options li .ui-icon {
+  position: absolute;
+  margin-left: -1.3em;
+}
+
+.options li.deadline {
+  padding: 0.1em;
+  padding-left: 1.5em;
+  height: 15px;
+  border-top: 2pt solid red;
+}
+
+.options li.deadline .text {
+  font-size: 11px;
 }
