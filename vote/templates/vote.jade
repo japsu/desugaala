@@ -24,14 +24,23 @@ block content
   h2 Anna äänesi
   p Vedä suosikkisi hiirellä mieleiseesi paremmuusjärjestykseen! Voit äänestää niin montaa ehdokasta kuin haluat. Jätä pohjalle ne ehdokkaat, joita et halua äänestää.
 
-  for category in categories
+  for category, options in categories_options
     h3 {{ category.title }}
-    ul.options(data-category='{{ category.id }}')
+    ul.category(data-category='{{ category.id }}')
       li.deadline
         span.ui-icon.ui-icon-arrowthick-2-n-s
         span.text Nosta kaikki suosikkisi paremmuusjärjestyksessä tämän linjan yläpuolelle!
-      for option in category.option_set.all
-        li
+      for option in options
+        li(data-option='{{ option.id }}')
           span.ui-icon.ui-icon-arrowthick-2-n-s
           span.text {{ option.title }}
+  
   h2 Lähetä
+
+  ul.errors
+    li#have-not-logged-in
+      | Et ole vielä kirjautunut sisään.
+      a(href='#login') Kirjaudu sisään
+    li#have-not-voted Et ole vielä äänestänyt missään kategoriassa.
+
+  button.btn#send-button Lähetä
