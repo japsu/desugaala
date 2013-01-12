@@ -3,7 +3,12 @@ html
   head
     title Hello, World!
     link(rel='stylesheet', href='{{ STATIC_URL }}css/bootstrap.min.css')
+    link(rel='stylesheet', href='{{ STATIC_URL }}css/ui-lightness/jquery-ui-1.9.2.custom.min.css')
     link(rel='stylesheet', href='{{ STATIC_URL }}css/desugaala.css')
+    script(src='{{ STATIC_URL }}js/jquery-1.8.3.min.js')
+    script(src='{{ STATIC_URL }}js/jquery-ui-1.9.2.custom.min.js')
+    script(src='{{ STATIC_URL }}js/bootstrap.min.js')
+    script(src='{{ STATIC_URL }}js/desugaala.js')
 
   body
     div.navbar.navbar-inverse.navbar-fixed-top

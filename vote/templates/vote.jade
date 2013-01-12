@@ -1,4 +1,5 @@
 extends base.jade
+{% load crispy_forms_tags %}
 
 block content
   div.hero-unit
@@ -11,17 +12,23 @@ block content
       li Vuoden kunniavieras
       li Vuoden skeneilmiö
       li Vuoden puheohjelma
-      li Vuoden cosplay(ryhmä)
+      li Vuoden cosplay
 
   h2 Kirjaudu sisään
   p
     | Äänestämiseen tarvitset tunnuksen
     a(href='http://forums.aniki.fi', target='_blank') Anikin foorumeille!
 
-  h2 Anna äänesi
-  p 
+  div {% crispy login_form %}
 
-    for category in categories
-      h3 {{ category.title }}
+  h2 Anna äänesi
+  p Vedä suosikkisi hiirellä mieleiseesi paremmuusjärjestykseen! Voit äänestää niin montaa ehdokasta kuin haluat. Jätä pohjalle ne ehdokkaat, joita et halua äänestää.
+
+  for category in categories
+    h3 {{ category.title }}
+    ul.options(data-category='{{ category.id }}')
+      li.deadline Nosta kaikki suosikkisi paremmuusjärjestyksessä tämän linjan yläpuolelle!
+      for option in category.option_set.all
+        li {{ option.title }}
 
   h2 Lähetä
