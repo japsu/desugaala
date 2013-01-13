@@ -10,12 +10,6 @@ from .models import Category
 from .forms import LoginForm
 from .helpers import json_rest, throttle_post
 
-if getattr(settings, 'DEMO_MODE', False):
-  perform_checks = _fake_perform_checks
-else:
-  from phpbb.auth.auth_db import login_db
-  perform_checks = _actual_perform_checks
-
 def _fake_perform_checks(func):
   @wraps(func)
   def inner(request, data, *args, **kwargs):
@@ -42,6 +36,12 @@ def _actual_perform_checks(func):
     return func(request, data, user_row, *args, **kwargs)
 
   return inner
+
+if getattr(settings, 'DEMO_MODE', False):
+  perform_checks = _fake_perform_checks
+else:
+  from phpbb.auth.auth_db import login_db
+  perform_checks = _actual_perform_checks
 
 @ensure_csrf_cookie
 def vote_page(request):
