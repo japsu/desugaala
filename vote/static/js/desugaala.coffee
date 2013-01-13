@@ -1,7 +1,7 @@
 apiCall = (opts) -> _.defaults {}, opts, 
   type: 'POST'
   headers:
-    "X-CSRFToken": $(":input[name='csrfmiddlewaretoken']").val()
+    "X-CSRFToken": window.desugaalaCsrfToken
     "Content-Type": "application/json"
 
 serializeBallot = ->
@@ -24,33 +24,51 @@ serializeBallot = ->
         console?.log ' - option', option
         options.push option
     
-    ballot.push {category, options} if options.length > 0
+    ballot['category'] = options if options.length > 0
 
   url: '/vote'
-  data: JSON.stringify ballot
+  data: JSON.stringify
+    ballot: ballot
+    username: $('#id_username').val()
+    password: $('#id_password').val()
 
 $ ->
   $('.category').sortable().disableSelection()
 
-  _loggedIn = $('#id_username').asEventStream('change')
-    .merge($('#id_username').asEventStream('keyup'))
-    .merge($('#id_password').asEventStream('change'))
-    .merge($('#id_password').asEventStream('keyup'))
-    .throttle(1500)
+  _loggedInState = $('#login-button')
+    .asEventStream('click').doAction((e) -> false)
+    .merge($('#login-form').asEventStream('submit').doAction((e) -> false))
     .map ->
+      console?.log 'klak'
+
       username: $('#id_username').val()
       password: $('#id_password').val()
-    .filter (v) ->
-      v.username and v.password
     .map (data) ->
       url: '/login'
       data: JSON.stringify data
     .map(apiCall)
-    .map((v) -> v.result == 'ok')
-    .toProperty(false)
+    .ajax()
+    .map('.result')
+    .toProperty('not_yet_logged_in')
+
+  _loggedInState.onValue (v) -> console?.log '_loggedInState', v
+
+  _loginOk = _loggedInState.map((v) -> v == 'ok')
+  _loginOk.assign $('#send-button'), 'toggle'
+  _loginOk.assign $('.login-ok'), 'toggle'
+  _loginOk.not().assign $('#login-form'), 'toggle'
+
+  _loggedInState.map((v) -> v == 'login_failed' or v == 'not_yet_logged_in')
+    .assign $('#not-logged-in'), 'toggle'
+
+  _loggedInState.map((v) -> v == 'login_failed')
+    .assign $('.login-failed'), 'toggle'
+
+  _loggedInState.map((v) -> v == 'already_voted')
+    .assign $('.already-voted'), 'toggle'
 
   $('#send-button').asEventStream('click')
-    .filter(_loggedIn)
+    .filter(_loginOk)
     .map(serializeBallot)
     .map(apiCall)
     .ajax()

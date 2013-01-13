@@ -14,14 +14,21 @@ class Option(models.Model):
       return self.title
 
 class Ballot(models.Model):
+    ip_address = models.CharField(max_length=16)
     user_agent = models.CharField(max_length=256)
     timestamp = models.DateTimeField()
 
+class BallotCategory(models.Model):
+    ballot = models.ForeignKey(Ballot)
+    category = models.ForeignKey(Category)
+
 class BallotOption(models.Model):
     order = models.IntegerField()
-    ballot = models.ForeignKey(Ballot)
+    ballot_category = models.ForeignKey(BallotCategory)
     option = models.ForeignKey(Option)
 
 class AlreadyVoted(models.Model):
     userid = models.IntegerField(unique=True)
-
+    ip_address = models.CharField(max_length=16)
+    user_agent = models.CharField(max_length=256)
+    timestamp = models.DateTimeField()

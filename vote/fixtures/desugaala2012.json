@@ -1,0 +1,501 @@
+[
+  {
+    "pk": 1,
+    "model": "vote.category",
+    "fields": {
+      "title": "Vuoden kotimainen mangajulkaisu"
+    }
+  },
+  {
+    "pk": 2,
+    "model": "vote.category",
+    "fields": {
+      "title": "Vuoden tapahtuma"
+    }
+  },
+  {
+    "pk": 3,
+    "model": "vote.category",
+    "fields": {
+      "title": "Vuoden skeneilmiö"
+    }
+  },
+  {
+    "pk": 4,
+    "model": "vote.category",
+    "fields": {
+      "title": "Vuoden kunniavieras"
+    }
+  },
+  {
+    "pk": 5,
+    "model": "vote.category",
+    "fields": {
+      "title": "Vuoden puheohjelma"
+    }
+  },
+  {
+    "pk": 1,
+    "model": "vote.option",
+    "fields": {
+      "category": 1,
+      "title": "Arki (Nichijou)"
+    }
+  },
+  {
+    "pk": 2,
+    "model": "vote.option",
+    "fields": {
+      "category": 1,
+      "title": "Finlandia"
+    }
+  },
+  {
+    "pk": 3,
+    "model": "vote.option",
+    "fields": {
+      "category": 1,
+      "title": "Gon"
+    }
+  },
+  {
+    "pk": 4,
+    "model": "vote.option",
+    "fields": {
+      "category": 1,
+      "title": "Kuroshitsuji"
+    }
+  },
+  {
+    "pk": 5,
+    "model": "vote.option",
+    "fields": {
+      "category": 1,
+      "title": "Monster Hunter Orage"
+    }
+  },
+  {
+    "pk": 6,
+    "model": "vote.option",
+    "fields": {
+      "category": 1,
+      "title": "Riki"
+    }
+  },
+  {
+    "pk": 7,
+    "model": "vote.option",
+    "fields": {
+      "category": 1,
+      "title": "Vampire Knight"
+    }
+  },
+  {
+    "pk": 8,
+    "model": "vote.option",
+    "fields": {
+      "category": 1,
+      "title": "Paradise Kiss"
+    }
+  },
+  {
+    "pk": 9,
+    "model": "vote.option",
+    "fields": {
+      "category": 1,
+      "title": "Viidakon valtias"
+    }
+  },
+  {
+    "pk": 10,
+    "model": "vote.option",
+    "fields": {
+      "category": 1,
+      "title": "Soul Eater"
+    }
+  },
+  {
+    "pk": 11,
+    "model": "vote.option",
+    "fields": {
+      "category": 1,
+      "title": "Kill Me Baby"
+    }
+  },
+  {
+    "pk": 12,
+    "model": "vote.option",
+    "fields": {
+      "category": 2,
+      "title": "Desucon Frostbite"
+    }
+  },
+  {
+    "pk": 13,
+    "model": "vote.option",
+    "fields": {
+      "category": 2,
+      "title": "Tampere Kuplii"
+    }
+  },
+  {
+    "pk": 14,
+    "model": "vote.option",
+    "fields": {
+      "category": 2,
+      "title": "Kitacon"
+    }
+  },
+  {
+    "pk": 15,
+    "model": "vote.option",
+    "fields": {
+      "category": 2,
+      "title": "Chibicon"
+    }
+  },
+  {
+    "pk": 16,
+    "model": "vote.option",
+    "fields": {
+      "category": 2,
+      "title": "Kirsikankukkacon"
+    }
+  },
+  {
+    "pk": 17,
+    "model": "vote.option",
+    "fields": {
+      "category": 2,
+      "title": "Animecon"
+    }
+  },
+  {
+    "pk": 18,
+    "model": "vote.option",
+    "fields": {
+      "category": 2,
+      "title": "Desucon"
+    }
+  },
+  {
+    "pk": 19,
+    "model": "vote.option",
+    "fields": {
+      "category": 2,
+      "title": "Tracon"
+    }
+  },
+  {
+    "pk": 20,
+    "model": "vote.option",
+    "fields": {
+      "category": 2,
+      "title": "Oulun animeseminaari"
+    }
+  },
+  {
+    "pk": 21,
+    "model": "vote.option",
+    "fields": {
+      "category": 2,
+      "title": "Shirocon"
+    }
+  },
+  {
+    "pk": 22,
+    "model": "vote.option",
+    "fields": {
+      "category": 2,
+      "title": "Katsudocon"
+    }
+  },
+  {
+    "pk": 23,
+    "model": "vote.option",
+    "fields": {
+      "category": 2,
+      "title": "Kawacon"
+    }
+  },
+  {
+    "pk": 24,
+    "model": "vote.option",
+    "fields": {
+      "category": 2,
+      "title": "DesuTalks"
+    }
+  },
+  {
+    "pk": 25,
+    "model": "vote.option",
+    "fields": {
+      "category": 2,
+      "title": "CosplayGaala"
+    }
+  },
+  {
+    "pk": 26,
+    "model": "vote.option",
+    "fields": {
+      "category": 2,
+      "title": "Yamacon"
+    }
+  },
+  {
+    "pk": 27,
+    "model": "vote.option",
+    "fields": {
+      "category": 2,
+      "title": "Kokkocon"
+    }
+  },
+  {
+    "pk": 28,
+    "model": "vote.option",
+    "fields": {
+      "category": 2,
+      "title": "hypeCon"
+    }
+  },
+  {
+    "pk": 29,
+    "model": "vote.option",
+    "fields": {
+      "category": 3,
+      "title": "Animemusiikkikonsertti Animeconissa"
+    }
+  },
+  {
+    "pk": 30,
+    "model": "vote.option",
+    "fields": {
+      "category": 3,
+      "title": "Legend of Zelda -konsertti Traconissa"
+    }
+  },
+  {
+    "pk": 31,
+    "model": "vote.option",
+    "fields": {
+      "category": 3,
+      "title": "Hopeanuolimusikaali 2"
+    }
+  },
+  {
+    "pk": 32,
+    "model": "vote.option",
+    "fields": {
+      "category": 3,
+      "title": "Furontsaido Orii -musiikkivideoparodia"
+    }
+  },
+  {
+    "pk": 33,
+    "model": "vote.option",
+    "fields": {
+      "category": 3,
+      "title": "Kuinka kuolin Desuconissa -visual novel"
+    }
+  },
+  {
+    "pk": 34,
+    "model": "vote.option",
+    "fields": {
+      "category": 3,
+      "title": "Ginga room - Hopeanuolihuone coneissa"
+    }
+  },
+  {
+    "pk": 35,
+    "model": "vote.option",
+    "fields": {
+      "category": 4,
+      "title": "Noriaki Sugiyama (Desucon)"
+    }
+  },
+  {
+    "pk": 36,
+    "model": "vote.option",
+    "fields": {
+      "category": 4,
+      "title": "Yoshihiro Takahashi (Animecon)"
+    }
+  },
+  {
+    "pk": 37,
+    "model": "vote.option",
+    "fields": {
+      "category": 4,
+      "title": "Aki Hata (Desucon)"
+    }
+  },
+  {
+    "pk": 38,
+    "model": "vote.option",
+    "fields": {
+      "category": 4,
+      "title": "Toshio Furukawa (Desucon Frostbite)"
+    }
+  },
+  {
+    "pk": 39,
+    "model": "vote.option",
+    "fields": {
+      "category": 4,
+      "title": "Yasuhiro Nakura (Tracon)"
+    }
+  },
+  {
+    "pk": 40,
+    "model": "vote.option",
+    "fields": {
+      "category": 4,
+      "title": "Team Four Star (Animecon)"
+    }
+  },
+  {
+    "pk": 41,
+    "model": "vote.option",
+    "fields": {
+      "category": 5,
+      "title": "Japanin henkimaailma ja sen rajalla (Milla Katajisto, Aino Mäkinen & Mirva Pasanen, Desucon)"
+    }
+  },
+  {
+    "pk": 42,
+    "model": "vote.option",
+    "fields": {
+      "category": 5,
+      "title": "Animen rakastamisen teoria (Matias Tukiainen, Valtteri Strömsholm - Desucon Frostbite)"
+    }
+  },
+  {
+    "pk": 43,
+    "model": "vote.option",
+    "fields": {
+      "category": 5,
+      "title": "Vihaluento (Konsta Kokkinen - Desucon)"
+    }
+  },
+  {
+    "pk": 44,
+    "model": "vote.option",
+    "fields": {
+      "category": 5,
+      "title": "Iloinen muumiperhe – Japaniin ja takaisin (Cilla, Nita ja Myy Lohi - Tracon)"
+    }
+  },
+  {
+    "pk": 45,
+    "model": "vote.option",
+    "fields": {
+      "category": 5,
+      "title": "Kun addiktio iskee – mikä animessa ja mangassa koukuttaa (Sora Hietala, Tracon)"
+    }
+  },
+  {
+    "pk": 46,
+    "model": "vote.option",
+    "fields": {
+      "category": 5,
+      "title": "Tite Kubon mestaritrolli (Mika Valtonen - Desucon Frostbite)"
+    }
+  },
+  {
+    "pk": 47,
+    "model": "vote.option",
+    "fields": {
+      "category": 5,
+      "title": "Apua, kaverini on fujoshi! (Maija Lehtola - Desucon Frostbite)"
+    }
+  },
+  {
+    "pk": 48,
+    "model": "vote.option",
+    "fields": {
+      "category": 5,
+      "title": "Animefanit eivät pääse taivaaseen (NaruDossu, Sipe ja Frii - Animecon X)"
+    }
+  },
+  {
+    "pk": 49,
+    "model": "vote.option",
+    "fields": {
+      "category": 5,
+      "title": "10 + 1 syytä rakastaa Kaoru Moria (Anna Rantsila - Tracon)"
+    }
+  },
+  {
+    "pk": 50,
+    "model": "vote.option",
+    "fields": {
+      "category": 5,
+      "title": "Steins;Gate - nörttien kosto (Mikko Lammi - Desucon)"
+    }
+  },
+  {
+    "pk": 51,
+    "model": "vote.option",
+    "fields": {
+      "category": 5,
+      "title": "Kenelle tämä on oikein tarkoitettu? (Matias Tukiainen - Desucon)"
+    }
+  },
+  {
+    "pk": 52,
+    "model": "vote.option",
+    "fields": {
+      "category": 5,
+      "title": "Kuoleeko anime Miyazakin mukana? (Harri Holappa - Desucon, Animecon X)"
+    }
+  },
+  {
+    "pk": 53,
+    "model": "vote.option",
+    "fields": {
+      "category": 5,
+      "title": "Manly Men Talk: GTO (Animecon X)"
+    }
+  },
+  {
+    "pk": 54,
+    "model": "vote.option",
+    "fields": {
+      "category": 5,
+      "title": "Princess Tutu – metabalettia esiripun takana (Maaret Stepanoff, Desucon)"
+    }
+  },
+  {
+    "pk": 55,
+    "model": "vote.option",
+    "fields": {
+      "category": 5,
+      "title": "MyAnimeList harrastajan ihmisarvon mittarina (Valtteri Strömsholm, DesuTalks)"
+    }
+  },
+  {
+    "pk": 56,
+    "model": "vote.option",
+    "fields": {
+      "category": 5,
+      "title": "Welcome to NHK - Aikamme Anime (Vahvin, Desucon)"
+    }
+  },
+  {
+    "pk": 57,
+    "model": "vote.option",
+    "fields": {
+      "category": 5,
+      "title": "TIGER & BUNNY: supersankareiden uudet tuulet (Lumi Kyngäs - Desucon)"
+    }
+  },
+  {
+    "pk": 58,
+    "model": "vote.option",
+    "fields": {
+      "category": 5,
+      "title": "Hyi, Homoa! -antologian julkaisutilaisuus (Desucon)"
+    }
+  }
+]

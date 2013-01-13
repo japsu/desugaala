@@ -1,13 +1,16 @@
 .content {
-
   margin-top: 60px;
+}
+
+.desugaala-banner {
+  background: url(../img/bg.jpg);
+  color: #efefef;
 }
 
 .category {
   list-style-type: none;
   margin: 0;
   padding: 0;
-  width: 60%;
 }
 
 .category li {
@@ -20,6 +23,7 @@
 
 .category li:hover {
   background-color: #ddf;
+  cursor: move;
 }
 
 .category li .ui-icon {
@@ -36,4 +40,28 @@
 
 .category li.deadline .text {
   font-size: 11px;
+}
+
+.credit {
+  margin-top: 1.5em;
+}
+
+.error, .triumph {
+  padding: 0.5em;
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+}
+
+.error {
+  background-color: #fee;
+  color: #966;
+}
+
+.triumph {
+  background-color: #efe;
+  color: #696;
+}
+
+.categories {
+  margin-bottom: 3em;
 }

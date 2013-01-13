@@ -1,8 +1,7 @@
 extends base.jade
-{% load crispy_forms_tags %}
 
 block content
-  div.hero-unit
+  .hero-unit.desugaala-banner
     h1 DesuGaala 2012
     p Viime kerralla Frostbitessä nähtiin ensimmäistä kertaa "animeskenen vuosijuhla", DesuGaala, jossa jaettiin palkintoja animevuoden 2011 tärkeille ansioille. Nyt DesuGaala palaa Desucon Frostbiteen ja kaikilla on oikeus ja suorastaan velvollisuus äänestää! Desucon Frostbiteen ei tarvitse päästä, kunhan suosikkeja riittää ja niille haluaa antaa äänensä.
     p DesuGaalassa 2012 palkintoja jaetaan seuraavissa sarjoissa:
@@ -14,33 +13,64 @@ block content
       li Vuoden puheohjelma
       li Vuoden cosplay
 
-  h2 Kirjaudu sisään
-  p
-    | Äänestämiseen tarvitset tunnuksen
-    a(href='http://forums.aniki.fi', target='_blank') Anikin foorumeille!
+  // hack for scrolling
+  #login
 
-  div {% crispy login_form %}
+  .hero-unit
+    h2 Kirjaudu sisään Anikin foorumitunnuksellasi!
+    p
+      | Äänestämiseen tarvitset tunnuksen
+      a(href='http://forums.aniki.fi', target='_blank') Anikin foorumeille
+      | .
 
-  h2 Anna äänesi
-  p Vedä suosikkisi hiirellä mieleiseesi paremmuusjärjestykseen! Voit äänestää niin montaa ehdokasta kuin haluat. Jätä pohjalle ne ehdokkaat, joita et halua äänestää.
+    #login-form
+      div {{ login_form }}
+      button.btn.btn-large.btn-primary#login-button Kirjaudu sisään
 
-  for category, options in categories_options
-    h3 {{ category.title }}
-    ul.category(data-category='{{ category.id }}')
-      li.deadline
-        span.ui-icon.ui-icon-arrowthick-2-n-s
-        span.text Nosta kaikki suosikkisi paremmuusjärjestyksessä tämän linjan yläpuolelle!
-      for option in options
-        li(data-option='{{ option.id }}')
+    .already-voted.error
+      i.icon-warning-sign
+      |  Olet jo äänestänyt.
+
+    .login-failed.error
+      i.icon-warning-sign
+      |  Sisäänkirjautuminen epäonnistui. Tarkista käyttäjätunnus ja salasana.
+
+    .login-ok.triumph
+      i.icon-ok
+      |  Sisäänkirjautuminen onnistui. Voit nyt antaa äänesi alla.
+
+  .hero-unit
+    h2 Anna äänesi!
+    p Vedä suosikkisi hiirellä mieleiseesi paremmuusjärjestykseen &ndash; mieluisin ylimmäksi! Voit äänestää niin montaa ehdokasta kuin haluat. Jätä pohjalle punaisen viivan alle ne ehdokkaat, joita et halua äänestää.
+    p.muted.small
+      | Äänet lasketaan 
+      a(href="http://en.wikipedia.org/wiki/Schulze_method") Schulzen menetelmällä
+      | .
+
+  div.categories
+    for category, options in categories_options
+      h3 {{ category.title }}
+      ul.category(data-category='{{ category.id }}')
+        li.deadline
           span.ui-icon.ui-icon-arrowthick-2-n-s
-          span.text {{ option.title }}
+          span.text Nosta kaikki suosikkisi paremmuusjärjestyksessä tämän linjan yläpuolelle!
+        for option in options
+          li(data-option='{{ option.id }}')
+            span.ui-icon.ui-icon-arrowthick-2-n-s
+            span.text {{ option.title }}
   
-  h2 Lähetä
+  .hero-unit
+    h2 Lähetä
 
-  ul.errors
-    li#have-not-logged-in
-      | Et ole vielä kirjautunut sisään.
+    p Tässä olivat kaikki sarjat! Lähetä äänesi painamalla Lähetä-painiketta.
+
+    #not-logged-in.error
+      i.icon-warning-sign
+      |  Et ole vielä kirjautunut sisään.
       a(href='#login') Kirjaudu sisään
-    li#have-not-voted Et ole vielä äänestänyt missään kategoriassa.
 
-  button.btn#send-button Lähetä
+    .already-voted.error
+      i.icon-warning-sign
+      |  Olet jo äänestänyt.
+
+    button.btn.btn-large.btn-primary#send-button Lähetä
