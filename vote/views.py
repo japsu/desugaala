@@ -5,7 +5,6 @@ from django.conf import settings
 from django.shortcuts import render
 from django.views.decorators.csrf import ensure_csrf_cookie
 
-from phpbb.auth.auth_db import login_db
 
 from .models import Category
 from .forms import LoginForm
@@ -14,6 +13,7 @@ from .helpers import json_rest, throttle_post
 if getattr(settings, 'DEMO_MODE', False):
   perform_checks = _fake_perform_checks
 else:
+  from phpbb.auth.auth_db import login_db
   perform_checks = _actual_perform_checks
 
 def _fake_perform_checks(func):
