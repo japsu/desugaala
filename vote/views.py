@@ -1,5 +1,6 @@
 import datetime
 from random import shuffle
+from functools import wraps
 
 from django.conf import settings
 from django.shortcuts import render
@@ -23,6 +24,8 @@ def _fake_perform_checks(func):
     else:
       return dict(result='login_failed')
 
+  return inner
+
 def _actual_perform_checks(func):
   @wraps(func)
   def inner(request, data, *args, **kwargs):
@@ -42,6 +45,10 @@ if getattr(settings, 'DEMO_MODE', False):
 else:
   from phpbb.auth.auth_db import login_db
   perform_checks = _actual_perform_checks
+
+def handle_errors(func):
+  # XXX stub
+  return func
 
 @ensure_csrf_cookie
 def vote_page(request):
