@@ -13,7 +13,7 @@ block content
       li Vuoden puheohjelma
       li Vuoden cosplay
 
-  .vote-page
+  #vote-page
     // hack for scrolling
     #login
 
@@ -77,8 +77,18 @@ block content
 
       button.btn.btn-large.btn-primary#send-button Lähetä
 
-    .thanks-page
-      .hero-unit
-        h2 Kiitos äänestäsi!
-        p Äänesi on otettu vastaan. Kiitos äänestäsi!
-        p Tulokset julkistetaan DesuGaalassa Desucon Frostbitessä 16. helmikuuta 2013.
+  #thanks-page
+    .hero-unit
+      h2 Kiitos äänestäsi!
+      p Äänesi on otettu vastaan. Kiitos äänestäsi!
+      p Tulokset julkistetaan DesuGaalassa Desucon Frostbitessä 16. helmikuuta 2013.
+
+  #oops-page
+    .hero-unit
+      h2 Voi rähmä!
+      p Jotain meni pieleen eikä ääntäsi valitettavasti saatu tällä kertaa rekisteröityä!
+      p Yritäthän myöhemmin uudelleen.
+      p 
+        | Jos virhe toistuu, voit vaikka tweetata hellästi mutta äkäisesti
+        a(href='https://twitter.com/ssspaju', target='_blank') Japsulle
+        | .

@@ -68,9 +68,21 @@ $ ->
   _loggedInState.map((v) -> v == 'already_voted')
     .assign $('.already-voted'), 'toggle'
 
-  $('#send-button').asEventStream('click')
+  _voteState = $('#send-button').asEventStream('click')
     .filter(_loginOk)
     .map(serializeBallot)
     .map(apiCall)
     .ajax()
-    .onValue (v) -> console?.log '/vote response', v
+    .map('.result')
+    .toProperty('vote_not_yet_sent')
+
+  _voteState.onValue (v) -> console?.log '_voteState', v
+
+  _voteState.map((v) -> v == 'vote_not_yet_sent')
+    .assign $('#vote-page'), 'toggle'
+
+  _voteState.map((v) -> v == 'ok')
+    .assign $('#thanks-page'), 'toggle'
+
+  _voteState.map((v) -> v != 'ok' and v != 'vote_not_yet_sent')
+    .assign $('#oops-page'), 'toggle'

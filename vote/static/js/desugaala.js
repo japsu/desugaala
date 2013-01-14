@@ -56,7 +56,7 @@
   };
 
   $(function() {
-    var _loggedInState, _loginOk;
+    var _loggedInState, _loginOk, _voteState;
     $('.category').sortable().disableSelection();
     _loggedInState = $('#login-button').asEventStream('click').doAction(function(e) {
       return false;
@@ -94,9 +94,19 @@
     _loggedInState.map(function(v) {
       return v === 'already_voted';
     }).assign($('.already-voted'), 'toggle');
-    return $('#send-button').asEventStream('click').filter(_loginOk).map(serializeBallot).map(apiCall).ajax().onValue(function(v) {
-      return typeof console !== "undefined" && console !== null ? console.log('/vote response', v) : void 0;
+    _voteState = $('#send-button').asEventStream('click').filter(_loginOk).map(serializeBallot).map(apiCall).ajax().map('.result').toProperty('vote_not_yet_sent');
+    _voteState.onValue(function(v) {
+      return typeof console !== "undefined" && console !== null ? console.log('_voteState', v) : void 0;
     });
+    _voteState.map(function(v) {
+      return v === 'vote_not_yet_sent';
+    }).assign($('#vote-page'), 'toggle');
+    _voteState.map(function(v) {
+      return v === 'ok';
+    }).assign($('#thanks-page'), 'toggle');
+    return _voteState.map(function(v) {
+      return v !== 'ok' && v !== 'vote_not_yet_sent';
+    }).assign($('#oops-page'), 'toggle');
   });
 
 }).call(this);
