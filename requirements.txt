@@ -5,4 +5,3 @@ gunicorn==0.17.2
 pyjade==1.9
 python-graph-core==1.8.2
 python-vote-core==20120423.0
-psycopg2==2.4.5
