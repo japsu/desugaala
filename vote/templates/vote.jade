@@ -51,9 +51,7 @@ block content
     .hero-unit
       h3 {{ category.title }}
       ul.category(data-category='{{ category.id }}')
-        li.deadline.btn.btn-small.btn-danger
-          i.icon-resize-vertical
-          | Nosta kaikki suosikkisi paremmuusjärjestyksessä tämän linjan yläpuolelle!
+        li.deadline.btn.btn-small.btn-danger Nosta kaikki suosikkisi paremmuusjärjestyksessä tämän linjan yläpuolelle!
         for option in options
           li(data-option='{{ option.id }}').option.btn
             i.icon-resize-vertical
