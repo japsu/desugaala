@@ -13,62 +13,72 @@ block content
       li Vuoden puheohjelma
       li Vuoden cosplay
 
-  // hack for scrolling
-  #login
+  .vote-page
+    // hack for scrolling
+    #login
 
-  .hero-unit
-    h2 Kirjaudu sisään Anikin foorumitunnuksellasi!
-    p
-      | Äänestämiseen tarvitset tunnuksen
-      a(href='http://forums.aniki.fi', target='_blank') Anikin foorumeille
-      | .
-
-    #login-form
-      div {{ login_form }}
-      button.btn.btn-large.btn-primary#login-button Kirjaudu sisään
-
-    .already-voted.error
-      i.icon-warning-sign
-      |  Olet jo äänestänyt.
-
-    .login-failed.error
-      i.icon-warning-sign
-      |  Sisäänkirjautuminen epäonnistui. Tarkista käyttäjätunnus ja salasana.
-
-    .login-ok.triumph
-      i.icon-ok
-      |  Sisäänkirjautuminen onnistui. Voit nyt antaa äänesi alla.
-
-  .hero-unit
-    h2 Anna äänesi!
-    p Vedä suosikkisi hiirellä mieleiseesi paremmuusjärjestykseen &ndash; mieluisin ylimmäksi! Voit äänestää niin montaa ehdokasta kuin haluat. Jätä pohjalle punaisen viivan alle ne ehdokkaat, joita et halua äänestää.
-    p.muted.small
-      | Äänet lasketaan 
-      a(href="http://en.wikipedia.org/wiki/Schulze_method") Schulzen menetelmällä
-      | .
-
-  for category, options in categories_options
     .hero-unit
-      h2 {{ category.title }}
-      ul.category(data-category='{{ category.id }}')
-        li.deadline.btn.btn-small.btn-danger Nosta kaikki suosikkisi paremmuusjärjestyksessä tämän linjan yläpuolelle!
-        for option in options
-          li(data-option='{{ option.id }}').option.btn
-            i.icon-resize-vertical
-            | {{ option.title }}
-  
-  .hero-unit
-    h2 Lähetä
+      h2 Kirjaudu sisään Anikin foorumitunnuksellasi!
+      p
+        | Äänestämiseen tarvitset tunnuksen
+        a(href='http://forums.aniki.fi', target='_blank') Anikin foorumeille
+        | .
 
-    p Tässä olivat kaikki sarjat! Lähetä äänesi painamalla Lähetä-painiketta.
+      #login-form
+        div {{ login_form }}
+        button.btn.btn-large.btn-primary#login-button Kirjaudu sisään
 
-    #not-logged-in.error
-      i.icon-warning-sign
-      |  Et ole vielä kirjautunut sisään.
-      a(href='#login') Kirjaudu sisään
+      .already-voted.error
+        i.icon-warning-sign
+        |  Olet jo äänestänyt.
 
-    .already-voted.error
-      i.icon-warning-sign
-      |  Olet jo äänestänyt.
+      .login-failed.error
+        i.icon-warning-sign
+        |  Sisäänkirjautuminen epäonnistui. Tarkista käyttäjätunnus ja salasana.
 
-    button.btn.btn-large.btn-primary#send-button Lähetä
+      .login-ok.triumph
+        i.icon-ok
+        |  Sisäänkirjautuminen onnistui. Voit nyt antaa äänesi alla.
+
+    .hero-unit
+      h2 Anna äänesi!
+      p Vedä suosikkisi hiirellä mieleiseesi paremmuusjärjestykseen &ndash; mieluisin ylimmäksi! Voit äänestää niin montaa ehdokasta kuin haluat. Jätä pohjalle punaisen viivan alle ne ehdokkaat, joita et halua äänestää.
+      p.muted.small
+        | Äänet lasketaan 
+        a(href="http://en.wikipedia.org/wiki/Schulze_method") Schulzen menetelmällä
+        | .
+
+    for category, options in categories_options
+      .hero-unit
+        h2 {{ category.title }}
+        if category.description
+          p {{ category.description|safe }}
+
+        ul.category(data-category='{{ category.id }}')
+          li.deadline.btn.btn-small.btn-danger Nosta kaikki suosikkisi paremmuusjärjestyksessä tämän linjan yläpuolelle!
+          for option in options
+            li(data-option='{{ option.id }}').option.btn
+              i.icon-resize-vertical
+              | {{ option.title }}
+    
+    .hero-unit
+      h2 Lähetä
+
+      p Tässä olivat kaikki sarjat! Lähetä äänesi painamalla Lähetä-painiketta.
+
+      #not-logged-in.error
+        i.icon-warning-sign
+        |  Et ole vielä kirjautunut sisään.
+        a(href='#login') Kirjaudu sisään
+
+      .already-voted.error
+        i.icon-warning-sign
+        |  Olet jo äänestänyt.
+
+      button.btn.btn-large.btn-primary#send-button Lähetä
+
+    .thanks-page
+      .hero-unit
+        h2 Kiitos äänestäsi!
+        p Äänesi on otettu vastaan. Kiitos äänestäsi!
+        p Tulokset julkistetaan DesuGaalassa Desucon Frostbitessä 16. helmikuuta 2013.
