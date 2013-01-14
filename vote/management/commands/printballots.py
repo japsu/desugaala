@@ -9,9 +9,12 @@ class Command(BaseCommand):
     def handle(self, *args, **options):
         for category in Category.objects.all():
           print u'=== {category.title}'.format(**locals())
+          print
 
           for ballot_category in category.ballotcategory_set.all():
-            for ballot_option in ballot_category.ballotoption_set.all():
-              print ballot_option.option_id,
+            for index, ballot_option in enumerate(ballot_category.ballotoption_set.all().order_by('order')):
+              index += 1
+              option = ballot_option.option
+              print u'{index}. {option.title}'.format(**locals())
 
             print
