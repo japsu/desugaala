@@ -13,6 +13,23 @@ block content
       li Vuoden puheohjelma
       li Vuoden cosplay
 
+  if DEMO_MODE
+    .hero-unit
+      h2 Äänestys ei vielä ole käynnissä!
+      p Tämä on vasta keskeneräinen versio äänestysjärjestelmästä.
+      p
+        | Voit kokeilla äänestystä käyttäjätunnuksella
+        tt desu
+        |  ja salasanalla 
+        tt salainen
+        | .
+      p 
+        | Jos haluat nähdä, mitä tapahtuu kun yrittää äänestää tunnuksella joka on jo äänestänyt, kokeile äänestää käyttäjätunnuksella
+        tt onjo
+        |  ja salasanalla 
+        tt aanestetty
+        | .
+
   #vote-page
     // hack for scrolling
     #login
