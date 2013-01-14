@@ -32,6 +32,7 @@
           if (typeof console !== "undefined" && console !== null) {
             console.log('deadline');
           }
+          break;
         } else {
           option = $option.data('option');
           if (typeof console !== "undefined" && console !== null) {

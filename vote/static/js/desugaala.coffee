@@ -19,6 +19,7 @@ serializeBallot = ->
       $option = $(optionEl)
       if $option.is '.deadline'
         console?.log 'deadline'
+        break
       else
         option = $option.data 'option'
         console?.log ' - option', option
