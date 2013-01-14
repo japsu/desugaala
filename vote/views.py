@@ -5,11 +5,13 @@ from functools import wraps
 from django.conf import settings
 from django.shortcuts import render
 from django.views.decorators.csrf import ensure_csrf_cookie
+from django.utils.timezone import utc
 
-
-from .models import Category
+from .models import Category, Option, Ballot, BallotCategory, BallotOption, AlreadyVoted
 from .forms import LoginForm
 from .helpers import json_rest, throttle_post
+
+DEMO_MODE = getattr(settings, 'DEMO_MODE', False)
 
 def _fake_perform_checks(func):
   @wraps(func)
@@ -40,7 +42,7 @@ def _actual_perform_checks(func):
 
   return inner
 
-if getattr(settings, 'DEMO_MODE', False):
+if DEMO_MODE:
   perform_checks = _fake_perform_checks
 else:
   from phpbb.auth.auth_db import login_db
@@ -77,7 +79,7 @@ def login_api(request, data, user_row):
 @perform_checks
 @handle_errors
 def vote_api(request, data, user_row):
-  timestamp = datetime.utcnow()
+  timestamp = datetime.datetime.utcnow().replace(tzinfo=utc)
 
   # mark user as already voted
   already_voted = AlreadyVoted(
@@ -103,7 +105,7 @@ def vote_api(request, data, user_row):
 
     # check that every option only occurs once
     optionIds = [int(optionId) for optionId in optionIds]
-    if set(optionIds).length != optionIds.length:
+    if len(set(optionIds)) != len(optionIds):
       raise ValueError('forged ballot with duplicate ids')
 
     for index, optionId in enumerate(optionIds):
@@ -119,7 +121,9 @@ def vote_api(request, data, user_row):
 
   # all checks passed, commit
 
-  already_voted.save()
+  if not DEMO_MODE:
+    already_voted.save()
+
   ballot.save()
 
   for ballot_category, ballot_options in ballot_categories:

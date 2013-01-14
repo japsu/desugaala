@@ -28,7 +28,7 @@ class BallotOption(models.Model):
     option = models.ForeignKey(Option)
 
 class AlreadyVoted(models.Model):
-    userid = models.IntegerField(unique=True)
+    user_id = models.IntegerField(unique=True)
     ip_address = models.CharField(max_length=16)
     user_agent = models.CharField(max_length=256)
     timestamp = models.DateTimeField()

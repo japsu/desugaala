@@ -5,7 +5,7 @@ apiCall = (opts) -> _.defaults {}, opts,
     "Content-Type": "application/json"
 
 serializeBallot = ->
-  ballot = []
+  ballot = {}
 
   for categoryEl in $('.category')
     $category = $(categoryEl)
@@ -25,7 +25,7 @@ serializeBallot = ->
         console?.log ' - option', option
         options.push option
     
-    ballot['category'] = options if options.length > 0
+    ballot[category] = options if options.length > 0
 
   url: '/vote'
   data: JSON.stringify

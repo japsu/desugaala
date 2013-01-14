@@ -14,7 +14,7 @@
 
   serializeBallot = function() {
     var $category, $option, ballot, category, categoryEl, option, optionEl, options, _i, _j, _len, _len1, _ref, _ref1;
-    ballot = [];
+    ballot = {};
     _ref = $('.category');
     for (_i = 0, _len = _ref.length; _i < _len; _i++) {
       categoryEl = _ref[_i];
@@ -42,7 +42,7 @@
         }
       }
       if (options.length > 0) {
-        ballot['category'] = options;
+        ballot[category] = options;
       }
     }
     return {
