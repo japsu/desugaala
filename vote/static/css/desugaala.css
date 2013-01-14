@@ -14,32 +14,10 @@
 }
 
 .category li {
-  background-color: #eee;
-  margin: 0 3px 3px 3px;
-  padding: 0.4em;
-  padding-left: 1.5em;
-  height: 18px;
-}
-
-.category li:hover {
-  background-color: #ddf;
   cursor: move;
-}
-
-.category li .ui-icon {
-  position: absolute;
-  margin-left: -1.3em;
-}
-
-.category li.deadline {
-  padding: 0.1em;
-  padding-left: 1.5em;
-  height: 15px;
-  border-top: 2pt solid red;
-}
-
-.category li.deadline .text {
-  font-size: 11px;
+  display: block;
+  width: 100%;
+  text-align: left;
 }
 
 .credit {
