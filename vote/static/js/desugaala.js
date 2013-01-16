@@ -47,13 +47,17 @@
   };
 
   $(function() {
-    var _loggedInState, _loginOk, _voteState;
+    var preventDefault, _enterPressed, _loggedInState, _loginButtonPressed, _loginOk, _voteState;
     $('.category').sortable().disableSelection();
-    _loggedInState = $('#login-button').asEventStream('click').doAction(function(e) {
+    preventDefault = function(e) {
+      e.preventDefault();
       return false;
-    }).merge($('#login-form').asEventStream('submit').doAction(function(e) {
-      return false;
-    })).map(function() {
+    };
+    _enterPressed = $('#login-form :input').asEventStream('keyup').doAction(preventDefault).filter(function(e) {
+      return e.keyCode === 13;
+    });
+    _loginButtonPressed = $('#login-button').asEventStream('click').doAction(preventDefault);
+    _loggedInState = _loginButtonPressed.merge(_enterPressed).map(function() {
       return {
         username: $('#id_username').val(),
         password: $('#id_password').val()
@@ -63,7 +67,7 @@
         url: '/login',
         data: JSON.stringify(data)
       };
-    }).map(apiCall).ajax().map('.result').toProperty('not_yet_logged_in');
+    }).map(apiCall).ajax().map('.result').mapError('login_failed').toProperty('not_yet_logged_in');
     _loginOk = _loggedInState.map(function(v) {
       return v === 'ok';
     });
@@ -79,7 +83,7 @@
     _loggedInState.map(function(v) {
       return v === 'already_voted';
     }).assign($('.already-voted'), 'toggle');
-    _voteState = $('#send-button').asEventStream('click').filter(_loginOk).map(serializeBallot).map(apiCall).ajax().map('.result').toProperty('vote_not_yet_sent');
+    _voteState = $('#send-button').asEventStream('click').filter(_loginOk).map(serializeBallot).map(apiCall).ajax().map('.result').mapError('vote_failed').toProperty('vote_not_yet_sent');
     _voteState.map(function(v) {
       return v === 'vote_not_yet_sent';
     }).assign($('#vote-page'), 'toggle');

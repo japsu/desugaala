@@ -32,9 +32,18 @@ serializeBallot = ->
 $ ->
   $('.category').sortable().disableSelection()
 
-  _loggedInState = $('#login-button')
-    .asEventStream('click').doAction((e) -> false)
-    .merge($('#login-form').asEventStream('submit').doAction((e) -> false))
+  preventDefault = (e) ->
+    e.preventDefault()
+    false
+
+  _enterPressed = $('#login-form :input').asEventStream('keyup')
+    .doAction(preventDefault)
+    .filter((e) -> e.keyCode == 13)
+
+  _loginButtonPressed = $('#login-button').asEventStream('click')
+    .doAction(preventDefault)
+
+  _loggedInState = _loginButtonPressed.merge(_enterPressed)
     .map ->
       username: $('#id_username').val()
       password: $('#id_password').val()
@@ -44,6 +53,7 @@ $ ->
     .map(apiCall)
     .ajax()
     .map('.result')
+    .mapError('login_failed')
     .toProperty('not_yet_logged_in')
 
   _loginOk = _loggedInState.map((v) -> v == 'ok')
@@ -66,6 +76,7 @@ $ ->
     .map(apiCall)
     .ajax()
     .map('.result')
+    .mapError('vote_failed')
     .toProperty('vote_not_yet_sent')
 
   _voteState.map((v) -> v == 'vote_not_yet_sent')
