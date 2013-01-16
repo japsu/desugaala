@@ -436,7 +436,7 @@
     "model": "vote.option",
     "fields": {
       "category": 5,
-      "title": "10 + 1 syytä rakastaa Kaoru Moria (Anna Rantsila - Tracon)"
+      "title": "10 + 1 syytä rakastaa Kaoru Moria (Anna Rantasila - Tracon)"
     }
   },
   {
@@ -572,7 +572,7 @@
     "model": "vote.option",
     "fields": {
       "category": 6,
-      "title": "Rintamasuunta: Hetalia-cosplayryhmä (Tracon)"
+      "title": "Rintamasuunta - Hetalia-cosplayryhmä (Tracon)"
     }
   },
   {
@@ -580,7 +580,7 @@
     "model": "vote.option",
     "fields": {
       "category": 6,
-      "title": "Dragonborn - Skyrim (Tracon)"
+      "title": "Anna Minkkinen - Dragonborn / Skyrim (Assembly)"
     }
   },
   {
@@ -588,7 +588,7 @@
     "model": "vote.option",
     "fields": {
       "category": 6,
-      "title": "Kuningatar Victoria - Kuroshitsuji (Tampere Kuplii)"
+      "title": "Kuningatar Victoria / Kuroshitsuji (Tampere Kuplii)"
     }
   },
   {
