@@ -8,6 +8,7 @@ A web app for voting stuff. Will be used to select the winners in DesuGaala 2012
     source venv-desugaala/bin/activate
     git clone https://github.com/japsu/desugaala.git
     cd desugaala
+    pip install git+https://github.com/japsu/phpbb-python.git
     pip install -r requirements.txt
     pip install your_database_adapter # hint: psycopg2 or MySQL-python
     cp desugaala/settings.py.dist desugaala/settings.py

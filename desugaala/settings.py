@@ -158,3 +158,13 @@ LOGGING = {
     }
 }
 
+# production only
+PHPBB_AUTH_DB_MODULE = "MySQLdb"
+PHPBB_AUTH_DB_PARAMS = {
+   "host":      "",
+   "user":      "",
+   "passwd":    "", # some libs use key "password"
+   "db":        "", # some libs use key "database"
+}
+PHPBB_AUTH_DB_PARAM_STYLE = "%s"
+PHPBB_AUTH_DB_USERS_TABLE = "users"
