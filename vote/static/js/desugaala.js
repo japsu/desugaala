@@ -49,6 +49,11 @@
   $(function() {
     var preventDefault, _enterPressed, _loggedInState, _loginButtonPressed, _loginOk, _voteState;
     $('.category').sortable().disableSelection();
+    $(document).ajaxStart(function() {
+      return $('#login-button, #send-button').addClass('disabled');
+    }).ajaxStop(function() {
+      return $('#login-button, #send-button').removeClass('disabled');
+    });
     preventDefault = function(e) {
       e.preventDefault();
       return false;
@@ -57,7 +62,9 @@
       return e.keyCode === 13;
     });
     _loginButtonPressed = $('#login-button').asEventStream('click').doAction(preventDefault);
-    _loggedInState = _loginButtonPressed.merge(_enterPressed).map(function() {
+    _loggedInState = _loginButtonPressed.merge(_enterPressed).filter(function() {
+      return !$('#login-button').is('.disabled');
+    }).map(function() {
       return {
         username: $('#id_username').val(),
         password: $('#id_password').val()
@@ -83,7 +90,9 @@
     _loggedInState.map(function(v) {
       return v === 'already_voted';
     }).assign($('.already-voted'), 'toggle');
-    _voteState = $('#send-button').asEventStream('click').filter(_loginOk).map(serializeBallot).map(apiCall).ajax().map('.result').mapError('vote_failed').toProperty('vote_not_yet_sent');
+    _voteState = $('#send-button').asEventStream('click').filter(_loginOk).filter(function() {
+      return !$('#send-button').is('.disabled');
+    }).map(serializeBallot).map(apiCall).ajax().map('.result').mapError('vote_failed').toProperty('vote_not_yet_sent');
     _voteState.map(function(v) {
       return v === 'vote_not_yet_sent';
     }).assign($('#vote-page'), 'toggle');

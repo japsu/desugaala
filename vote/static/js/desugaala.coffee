@@ -32,6 +32,12 @@ serializeBallot = ->
 $ ->
   $('.category').sortable().disableSelection()
 
+  $(document)
+    .ajaxStart ->
+      $('#login-button, #send-button').addClass 'disabled'
+    .ajaxStop ->
+      $('#login-button, #send-button').removeClass 'disabled'
+
   preventDefault = (e) ->
     e.preventDefault()
     false
@@ -44,6 +50,8 @@ $ ->
     .doAction(preventDefault)
 
   _loggedInState = _loginButtonPressed.merge(_enterPressed)
+    .filter ->
+      not $('#login-button').is '.disabled'
     .map ->
       username: $('#id_username').val()
       password: $('#id_password').val()
@@ -72,6 +80,8 @@ $ ->
 
   _voteState = $('#send-button').asEventStream('click')
     .filter(_loginOk)
+    .filter ->
+      not $('#send-button').is '.disabled'
     .map(serializeBallot)
     .map(apiCall)
     .ajax()
