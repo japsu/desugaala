@@ -66,7 +66,8 @@ def vote_page(request):
     vars = dict(
       categories_options=zip(categories, options),
       login_form=LoginForm(),
-      DEMO_MODE=DEMO_MODE
+      DEMO_MODE=DEMO_MODE,
+      GOOGLE_ANALYTICS_TOKEN=getattr(settings, 'GOOGLE_ANALYTICS_TOKEN', '')
     )
 
     return render(request, 'vote.jade', vars)
