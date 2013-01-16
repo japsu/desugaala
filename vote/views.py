@@ -28,18 +28,11 @@ def _fake_perform_checks(func):
 
   return inner
 
-def phpbb_login(username, password):
-  result, user_row = login_db(data['username'], data['password'])
-  if result == 'LOGIN_SUCCESS':
-    return user_row
-  else:
-    return None
-
 def _actual_perform_checks(func):
   @wraps(func)
   def inner(request, data, *args, **kwargs):
-    user_row = phpbb_login(data['username'], data['password'])
-    if not user_row:
+    result, user_row = login_db(data['username'], data['password'])
+    if result != 'LOGIN_SUCCESS':
       return dict(result='login_failed')
 
     if AlreadyVoted.objects.filter(user_id=user_row['user_id']).exists():
