@@ -20,24 +20,15 @@
       categoryEl = _ref[_i];
       $category = $(categoryEl);
       category = $category.data('category');
-      if (typeof console !== "undefined" && console !== null) {
-        console.log('category', category);
-      }
       options = [];
       _ref1 = $category.find('li');
       for (_j = 0, _len1 = _ref1.length; _j < _len1; _j++) {
         optionEl = _ref1[_j];
         $option = $(optionEl);
         if ($option.is('.deadline')) {
-          if (typeof console !== "undefined" && console !== null) {
-            console.log('deadline');
-          }
           break;
         } else {
           option = $option.data('option');
-          if (typeof console !== "undefined" && console !== null) {
-            console.log(' - option', option);
-          }
           options.push(option);
         }
       }
@@ -63,9 +54,6 @@
     }).merge($('#login-form').asEventStream('submit').doAction(function(e) {
       return false;
     })).map(function() {
-      if (typeof console !== "undefined" && console !== null) {
-        console.log('klak');
-      }
       return {
         username: $('#id_username').val(),
         password: $('#id_password').val()
@@ -76,9 +64,6 @@
         data: JSON.stringify(data)
       };
     }).map(apiCall).ajax().map('.result').toProperty('not_yet_logged_in');
-    _loggedInState.onValue(function(v) {
-      return typeof console !== "undefined" && console !== null ? console.log('_loggedInState', v) : void 0;
-    });
     _loginOk = _loggedInState.map(function(v) {
       return v === 'ok';
     });
@@ -95,9 +80,6 @@
       return v === 'already_voted';
     }).assign($('.already-voted'), 'toggle');
     _voteState = $('#send-button').asEventStream('click').filter(_loginOk).map(serializeBallot).map(apiCall).ajax().map('.result').toProperty('vote_not_yet_sent');
-    _voteState.onValue(function(v) {
-      return typeof console !== "undefined" && console !== null ? console.log('_voteState', v) : void 0;
-    });
     _voteState.map(function(v) {
       return v === 'vote_not_yet_sent';
     }).assign($('#vote-page'), 'toggle');

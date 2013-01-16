@@ -11,18 +11,14 @@ serializeBallot = ->
     $category = $(categoryEl)
     category = $category.data 'category'
 
-    console?.log 'category', category
-
     options = []
 
     for optionEl in $category.find('li')
       $option = $(optionEl)
       if $option.is '.deadline'
-        console?.log 'deadline'
         break
       else
         option = $option.data 'option'
-        console?.log ' - option', option
         options.push option
     
     ballot[category] = options if options.length > 0
@@ -40,8 +36,6 @@ $ ->
     .asEventStream('click').doAction((e) -> false)
     .merge($('#login-form').asEventStream('submit').doAction((e) -> false))
     .map ->
-      console?.log 'klak'
-
       username: $('#id_username').val()
       password: $('#id_password').val()
     .map (data) ->
@@ -51,8 +45,6 @@ $ ->
     .ajax()
     .map('.result')
     .toProperty('not_yet_logged_in')
-
-  _loggedInState.onValue (v) -> console?.log '_loggedInState', v
 
   _loginOk = _loggedInState.map((v) -> v == 'ok')
   _loginOk.assign $('#send-button'), 'toggle'
@@ -75,8 +67,6 @@ $ ->
     .ajax()
     .map('.result')
     .toProperty('vote_not_yet_sent')
-
-  _voteState.onValue (v) -> console?.log '_voteState', v
 
   _voteState.map((v) -> v == 'vote_not_yet_sent')
     .assign $('#vote-page'), 'toggle'
