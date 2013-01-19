@@ -3,9 +3,11 @@ extends base
 block content
   h1 Väliaikatilanne
 
+  p Yhteensä {{ num_votes }} ääntä.
+
   h2 Sarjain voittajat
 
-  for category, winner, tied_winners in categories
+  for category, winner, tied_winners, category_num_votes in categories
     h3 {{ category.title }}
     if tied_winners
       p Jaettu voitto:
@@ -14,6 +16,8 @@ block content
           li {{ tied_winner.title }}
     elif winner
       p {{ winner.title }}
+
+    p {{ category_num_votes }} ääntä tässä sarjassa.
 
   h2 Mielenkiintoiset parit
 
