@@ -126,7 +126,8 @@ INSTALLED_APPS = (
 
     'gunicorn',
     'south',
-    'vote'
+    'vote',
+    'status'
 )
 
 # A sample logging configuration. The only tangible logging

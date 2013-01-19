@@ -2,8 +2,6 @@
 
 from django.core.management.base import BaseCommand, CommandError
 
-from pyvotecore.schulze_method import SchulzeMethod
-
 from vote.models import Category, Option, BallotCategory
 
 class Command(BaseCommand):
@@ -15,28 +13,19 @@ class Command(BaseCommand):
           print u'=== {category.title}'.format(**locals())
           print
 
-          category_input = []
+          category_result = category.evaluate()
 
-          for ballot_category in category.ballotcategory_set.all():
-            ballot_options = ballot_category.ballotoption_set.all().order_by('order')
-            category_input.append(dict(
-              count=1,
-              ballot=[[ballot_option.option_id] for ballot_option in ballot_options]
-            ))
+          if category_result:
+              if 'tied_winners' in category_result:
+                  print 'JAETTU VOITTO:'
 
-          if category_input:
-            category_result = SchulzeMethod(category_input, ballot_notation='grouping').as_dict()
+                  for tied_winrar in category_result['tied_winners']:
+                      print tied_winrar.title
 
-            if 'tied_winners' in category_result:
-              print 'JAETTU VOITTO:'
-
-              for tied_winrar in category_result['tied_winners']:
-                print Option.objects.get(id=tied_winrar).title
-
-            elif 'winner' in category_result:
-              print Option.objects.get(id=category_result['winner']).title
+              elif 'winner' in category_result:
+                  print category_result['winner'].title
 
           else:
-            print u'EI ÄÄNIÄ'
+              print u'EI ÄÄNIÄ'
 
           print

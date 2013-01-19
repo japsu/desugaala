@@ -1,0 +1,27 @@
+extends base
+
+block content
+  h1 Väliaikatilanne
+
+  h2 Sarjain voittajat
+
+  for category, winner, tied_winners in categories
+    h3 {{ category.title }}
+    if tied_winners
+      p Jaettu voitto:
+      ul
+        for tied_winner in tied_winners
+          li {{ tied_winner.title }}
+    elif winner
+      p {{ winner.title }}
+
+  h2 Mielenkiintoiset parit
+
+  p Kustakin parista A ja B ilmoitetaan, kuinka moni piti A:ta parempana kuin B ja päin vastoin.
+
+  for watch in watches
+    h3 {{ watch.category.title }}
+
+    ul
+      for count, option in watch.evaluate
+        li {{ option.title }}: {{ count }}
