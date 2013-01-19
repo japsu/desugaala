@@ -16,8 +16,8 @@ class Watch(models.Model):
           results[ballot_option.option] += 1
           break
 
-    results = list((num_votes, option) for (option, num_votes) in results.iteritems())
-    results.sort(key=lambda (num_votes, option): -num_votes)
+    results = list(i for i in results.iteritems())
+    results.sort(key=lambda (option, num_votes): -num_votes)
     return results
 
   def __unicode__(self):

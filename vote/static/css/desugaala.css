@@ -43,3 +43,17 @@
 .categories {
   margin-bottom: 3em;
 }
+
+.pairs-table .title {
+  width: 35%;
+}
+
+.pairs-table .palks {
+  width: 55%;
+  vertical-align: center;
+}
+
+.pairs-table .palks .progress {
+  padding: 0;
+  margin: 0;
+}
