@@ -28,10 +28,17 @@ def _fake_perform_checks(func):
 
   return inner
 
+def login_db_with_retry(username, password):
+  try:
+    return login_db(username, password)
+  except OperationalError:
+    connect_to_database()
+    return login_db(username, password)
+
 def _actual_perform_checks(func):
   @wraps(func)
   def inner(request, data, *args, **kwargs):
-    result, user_row = login_db(data['username'], data['password'])
+    result, user_row = login_db_with_retry(data['username'], data['password'])
     if result != 'LOGIN_SUCCESS':
       return dict(result='login_failed')
 
@@ -47,6 +54,7 @@ if DEMO_MODE:
 else:
   from phpbb.auth.auth_db import login_db
   from phpbb.auth.backends import connect_to_database
+  from MySQLdb import OperationalError # XXX
   perform_checks = _actual_perform_checks
   connect_to_database()
 
