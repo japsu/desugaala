@@ -1,3 +1,5 @@
+import datetime
+
 from django.shortcuts import render
 from django.views.decorators.cache import cache_page
 
@@ -14,6 +16,7 @@ def status_page(request):
         categories.append((category, result.get('winner'), result.get('tied_winners'), num_votes))
 
     vars = dict(
+        timestamp=datetime.datetime.now(),
         num_votes=Ballot.objects.all().count(),
         watches=Watch.objects.all(),
         categories=categories

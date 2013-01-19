@@ -3,6 +3,8 @@ extends base
 block content
   h1 Väliaikatilanne
 
+  p Laskettu {{ timestamp|date:"DATETIME_FORMAT" }} (päivittyy 15 minuutin välein).
+
   p Yhteensä {{ num_votes }} ääntä.
 
   h2 Sarjain voittajat

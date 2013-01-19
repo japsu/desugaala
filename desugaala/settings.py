@@ -33,6 +33,7 @@ DATABASES['default'] = dj_database_url.config() if 'DATABASE_URL' in os.environ 
 # although not all choices may be available on all operating systems.
 # In a Windows environment this must be set to your system time zone.
 TIME_ZONE = 'Europe/Helsinki'
+DATETIME_FORMAT = 'd.m.y H:i'
 
 # Language code for this installation. All choices can be found here:
 # http://www.i18nguy.com/unicode/language-identifiers.html
