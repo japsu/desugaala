@@ -14,7 +14,7 @@ def status_page(request):
     for category in Category.objects.all():
         result = category.evaluate()
         num_votes = category.ballotcategory_set.all().count()
-        categories.append((category, result.get('winner'), result.get('tied_winners'), num_votes))
+        categories.append((category, result['order'][0], None, num_votes))
 
     for watch in Watch.objects.all():
         results = []

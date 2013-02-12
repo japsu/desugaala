@@ -1,8 +1,24 @@
 # encoding: utf-8
 
+from pprint import pprint
+from itertools import islice
+
 from django.core.management.base import BaseCommand, CommandError
 
 from vote.models import Category, Option, BallotCategory
+from status.models import Watch
+
+# http://stackoverflow.com/a/6822773/1012299
+def window(seq, n=2):
+    "Returns a sliding window (of width n) over data from the iterable"
+    "   s -> (s0,s1,...s[n-1]), (s1,s2,...,sn), ...                   "
+    it = iter(seq)
+    result = tuple(islice(it, n))
+    if len(result) == n:
+        yield result    
+    for elem in it:
+        result = result[1:] + (elem,)
+        yield result
 
 class Command(BaseCommand):
     args = ''
@@ -16,16 +32,23 @@ class Command(BaseCommand):
           category_result = category.evaluate()
 
           if category_result:
-              if 'tied_winners' in category_result:
-                  print 'JAETTU VOITTO:'
+            for index, (current, runner_up) in enumerate(window(category_result['order'])):
+                index += 1
 
-                  for tied_winrar in category_result['tied_winners']:
-                      print tied_winrar.title
+                # XXX hack
+                watch = Watch.objects.create(category=category)
+                watch.watchoption_set.create(option=current)
+                watch.watchoption_set.create(option=runner_up)
+                watch_result = watch.evaluate()
+                watch.delete()
 
-              elif 'winner' in category_result:
-                  print category_result['winner'].title
+                [(unused_winrar, winrar_votes), (unused_luser, luser_votes)] = watch_result
 
-          else:
-              print u'EI ÄÄNIÄ'
+                print u'{index}. {current.title} ({winrar_votes}-{luser_votes})'.format(**locals())
+
+            index += 1
+            last = category_result['order'][-1]
+
+            print u'{index}. {last.title}'.format(**locals())
 
           print

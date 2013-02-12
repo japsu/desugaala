@@ -1,6 +1,6 @@
 from django.db import models
 
-from pyvotecore.schulze_method import SchulzeMethod
+from pyvotecore.schulze_npr import SchulzeNPR
 
 class Category(models.Model):
     title = models.CharField(max_length=64)
@@ -17,7 +17,7 @@ class Category(models.Model):
             ))
 
         if category_input:
-            category_result = SchulzeMethod(category_input, ballot_notation='grouping').as_dict()
+            category_result = SchulzeNPR(category_input, ballot_notation='grouping').as_dict()
         else:
             category_result = dict()
 
