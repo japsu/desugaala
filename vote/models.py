@@ -1,10 +1,12 @@
 from django.db import models
+from django.template.loader import render_to_string
 
 from pyvotecore.schulze_npr import SchulzeNPR
 
 class Category(models.Model):
     title = models.CharField(max_length=64)
     description = models.CharField(max_length=1024, default='', blank=True)
+    template = models.CharField(max_length=64, default='category_basic.jade')
 
     def evaluate(self):
         category_input = []
@@ -22,6 +24,13 @@ class Category(models.Model):
             category_result = dict()
 
         return category_result
+
+    def render(self):
+        vars = dict(
+            category=self,
+            options=self.option_set.all()
+        )
+        return render_to_string(self.template, vars)
 
     def __unicode__(self):
         return self.title

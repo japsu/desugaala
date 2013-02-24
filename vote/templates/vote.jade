@@ -66,17 +66,7 @@ block content
         | .
 
     for category, options in categories_options
-      .hero-unit
-        h2 {{ category.title }}
-        if category.description
-          p {{ category.description|safe }}
-
-        ul.category(data-category='{{ category.id }}')
-          li.deadline.btn.btn-small.btn-danger Nosta kaikki suosikkisi paremmuusjärjestyksessä tämän linjan yläpuolelle!
-          for option in options
-            li(data-option='{{ option.id }}').option.btn
-              i.icon-resize-vertical
-              | {{ option.title }}
+      .hero-unit {{ category.render }}
     
     .hero-unit
       h2 Lähetä
