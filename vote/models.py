@@ -42,6 +42,12 @@ class Option(models.Model):
     def __unicode__(self):
         return self.title
 
+class OptionPicture(models.Model):
+    option = models.OneToOneField(Option, related_name='picture')
+    thumbnail = models.CharField(max_length=256)
+    preview = models.CharField(max_length=256)
+    link = models.CharField(max_length=256)
+
 class Ballot(models.Model):
     ip_address = models.CharField(max_length=16)
     user_agent = models.CharField(max_length=256)

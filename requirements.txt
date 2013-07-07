@@ -7,3 +7,4 @@ pyjade==1.9
 python-graph-core==1.8.2
 python-vote-core==20120423.0
 phpbb-python==0.0.1
+requests==1.2.3
