@@ -125,11 +125,14 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'django.contrib.admin',
 
+    'pipeline',
     'gunicorn',
     'south',
     'vote',
     'status'
 )
+
+STATICFILES_STORAGE = 'pipeline.storage.PipelineCachedStorage'
 
 # A sample logging configuration. The only tangible logging
 # performed by this configuration is to send an email to

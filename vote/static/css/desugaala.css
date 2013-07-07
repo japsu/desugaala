@@ -20,6 +20,10 @@
   margin: 0.2em 0 0.2em 0;
 }
 
+.deadline {
+  line-height: 20px !important;
+}
+
 .credit {
   margin-top: 1.5em;
 }
@@ -42,6 +46,16 @@
 
 .categories {
   margin-bottom: 3em;
+}
+
+.category-picture li {
+  width: 145px;
+}
+
+.category-picture-preview {
+  width: 600px;
+  float: right;
+  text-align: center;
 }
 
 .pairs-table .title {

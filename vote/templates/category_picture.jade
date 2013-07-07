@@ -2,11 +2,11 @@ h2 {{ category.title }}
 if category.description
   p {{ category.description|safe }}
 
+.category-picture-preview.well
+  img(src='{{ options.0.picture.preview }}', alt='{{ options.0.title }}')
+
 ul.category.category-picture(data-category='{{ category.id }}')
   li.deadline.btn.btn-small.btn-danger Nosta kaikki suosikkisi paremmuusjärjestyksessä tämän linjan yläpuolelle!
   for option in options
     li(data-option='{{ option.id }}').option.btn
       img(src='{{ option.picture.thumbnail }}', alt='{{ option.title }}')
-
-.category-picture-preview
-  img(src='{{ options.0.picture.preview }}', alt='{{ options.0.title }}')
