@@ -8,5 +8,5 @@ if category.description
 ul.category.category-picture(data-category='{{ category.id }}')
   li.deadline.btn.btn-small.btn-danger Nosta kaikki suosikkisi paremmuusjärjestyksessä tämän linjan yläpuolelle!
   for option in options
-    li(data-option='{{ option.id }}').option.btn
+    li(data-option='{{ option.id }}', data-preview='{{ option.picture.preview }}').option.btn
       img(src='{{ option.picture.thumbnail }}', alt='{{ option.title }}')

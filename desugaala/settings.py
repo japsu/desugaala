@@ -134,6 +134,21 @@ INSTALLED_APPS = (
 
 STATICFILES_STORAGE = 'pipeline.storage.PipelineCachedStorage'
 
+PIPELINE_COMPILERS = (
+  'pipeline.compilers.coffee.CoffeeScriptCompiler',
+)
+
+PIPELINE_COFFEE_SCRIPT_BINARY = 'coffee' # hail PATH
+
+PIPELINE_JS = {
+    'default': {
+        'source_filenames': (
+            'js/desugaala.coffee',
+        ),
+        'output_filename': 'js/desugaala.js',
+    }
+}
+
 # A sample logging configuration. The only tangible logging
 # performed by this configuration is to send an email to
 # the site admins on every HTTP 500 error when DEBUG=False.
