@@ -50,10 +50,11 @@
     var preventDefault, _enterPressed, _loggedInState, _loginButtonPressed, _loginOk, _voteState;
     $('.category').sortable().disableSelection();
     $('.category-picture .option').hover(function() {
-      if (typeof console !== "undefined" && console !== null) {
-        console.log('hover!', $(this));
-      }
-      return $(this).parents('.category-wrap').find('.category-picture-preview img').attr('src', $(this).data('preview'));
+      var $context, $this;
+      $this = $(this);
+      $context = $this.parents('.category-wrap').find('.category-picture-preview');
+      $context.find('img').attr('src', $this.data('preview')).attr('alt', $this.find('img').attr('alt'));
+      return $context.find('a').attr('href', $this.find('a').attr('href'));
     });
     $(document).ajaxStart(function() {
       return $('#login-button, #send-button').addClass('disabled');

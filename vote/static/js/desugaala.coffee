@@ -33,9 +33,12 @@ $ ->
   $('.category').sortable().disableSelection()
 
   $('.category-picture .option').hover ->
-    console?.log 'hover!', $(this)
-    $(this).parents('.category-wrap').find('.category-picture-preview img').attr 'src',
-      $(this).data 'preview'
+    $this = $(this)
+    $context = $this.parents('.category-wrap').find('.category-picture-preview')
+    $context.find('img')
+      .attr('src', $this.data('preview'))
+      .attr('alt', $this.find('img').attr('alt'))
+    $context.find('a').attr 'href', $this.find('a').attr('href')
 
   $(document)
     .ajaxStart ->

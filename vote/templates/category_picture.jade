@@ -3,10 +3,12 @@ if category.description
   p {{ category.description|safe }}
 
 .category-picture-preview.well
-  img(src='{{ options.0.picture.preview }}', alt='{{ options.0.title }}')
+  a(href='{{ options.0.picture.link }}', target='_blank')
+    img(src='{{ options.0.picture.preview }}', alt='{{ options.0.title }}')
 
 ul.category.category-picture.well(data-category='{{ category.id }}')
   li.deadline.btn.btn-small.btn-danger Kuolonlinja!
   for option in options
     li(data-option='{{ option.id }}', data-preview='{{ option.picture.preview }}').option
-      img(src='{{ option.picture.thumbnail }}', alt='{{ option.title }}')
+      a(href='{{ option.picture.link }}', target='_blank')
+        img(src='{{ option.picture.thumbnail }}', alt='{{ option.title }}')
