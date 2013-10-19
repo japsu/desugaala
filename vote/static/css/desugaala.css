@@ -48,14 +48,26 @@
   margin-bottom: 3em;
 }
 
+.category-picture {
+  width: 115px;
+  text-align: center;
+}
+
 .category-picture li {
-  width: 145px;
+  width: 95px;
+  text-align: left;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .category-picture-preview {
-  width: 600px;
+  width: 655px;
   float: right;
   text-align: center;
+}
+
+.category-picture .deadline {
+  width: 95px;
 }
 
 .pairs-table .title {

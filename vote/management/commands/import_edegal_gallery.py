@@ -29,6 +29,9 @@ class Command(BaseCommand):
           )
 
           for picture in album['pictures']:
+              if '-00' in picture['title']:
+                continue
+                
               option = category.option_set.create(title=picture['title'])
 
               thumbnail = min(picture['media'], key=thumbnail_epsilon)

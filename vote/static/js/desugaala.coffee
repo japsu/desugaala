@@ -32,6 +32,11 @@ serializeBallot = ->
 $ ->
   $('.category').sortable().disableSelection()
 
+  $('.category-picture .option').hover ->
+    console?.log 'hover!', $(this)
+    $(this).parents('.category-wrap').find('.category-picture-preview img').attr 'src',
+      $(this).data 'preview'
+
   $(document)
     .ajaxStart ->
       $('#login-button, #send-button').addClass 'disabled'
