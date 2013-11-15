@@ -2,6 +2,10 @@
 
 A web app for voting stuff. Will be used to select the winners in DesuGaala 2012.
 
+Copyright 2012-2013 Santtu Pajukanta. Licensed under the MIT license.
+
+Includes Bootstrap v2.2.2, Copyright 2012 Twitter, Inc. Licensed under the Apache License v2.0.
+
 ## Getting Started
 
     virtualenv venv-desugaala
