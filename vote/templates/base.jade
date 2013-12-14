@@ -1,21 +1,10 @@
-{% load compressed %}
-
 doctype 5
 html
   head
     title DesuGaala 2012
-    link(rel='stylesheet', href='{{ STATIC_URL }}css/bootstrap.min.css')
-    link(rel='stylesheet', href='{{ STATIC_URL }}css/ui-lightness/jquery-ui-1.9.2.custom.min.css')
-    {% compressed_css 'default' %}
     script
       window.desugaalaCsrfToken='{{ csrf_token }}';
-    script(src='{{ STATIC_URL }}js/jquery-1.8.3.min.js')
-    script(src='{{ STATIC_URL }}js/jquery-ui-1.9.2.custom.min.js')
-    script(src='{{ STATIC_URL }}js/bootstrap.min.js')
-    script(src='{{ STATIC_URL }}js/lodash.min.js')
-    script(src='{{ STATIC_URL }}js/Bacon.js')
-    script(src='{{ STATIC_URL }}js/Bacon.ajax.js')
-    {% compressed_js 'default' %}
+    include assets.html
     if GOOGLE_ANALYTICS_TOKEN
       script
         var _gaq = _gaq || [];

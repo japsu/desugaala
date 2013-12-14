@@ -73,14 +73,14 @@ STATIC_URL = '/static/'
 
 # Additional locations of static files
 STATICFILES_DIRS = (
+    mkpath('bower_components'),
 )
 
-# List of finder classes that know how to find static files in
-# various locations.
 STATICFILES_FINDERS = (
-    'django.contrib.staticfiles.finders.FileSystemFinder',
-    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
-#    'django.contrib.staticfiles.finders.DefaultStorageFinder',
+    'pipeline.finders.FileSystemFinder',
+    'pipeline.finders.AppDirectoriesFinder',
+    'pipeline.finders.PipelineFinder',
+    'pipeline.finders.CachedFileFinder',
 )
 
 # Make this unique, and don't share it with anybody.
@@ -143,6 +143,15 @@ PIPELINE_COFFEE_SCRIPT_BINARY = 'coffee' # hail PATH
 PIPELINE_JS = {
     'default': {
         'source_filenames': (
+            'jquery/jquery.min.js',
+            'jqueryui/ui/minified/jquery.ui.core.min.js',
+            'jqueryui/ui/minified/jquery.ui.widget.min.js',
+            'jqueryui/ui/minified/jquery.ui.mouse.min.js',
+            'jqueryui/ui/minified/jquery.ui.sortable.min.js',
+            'jqueryui/ui/minified/jquery.ui.draggable.min.js',
+            'bacon/dist/Bacon.min.js',
+            'bacon.jquery/dist/bacon.jquery.min.js',
+            'bootstrap/dist/js/bootstrap.min.js',
             'js/desugaala.coffee',
         ),
         'output_filename': 'js/desugaala.js',
@@ -152,6 +161,7 @@ PIPELINE_JS = {
 PIPELINE_CSS = {
     'default': {
         'source_filenames': (
+            'bootstrap/dist/css/bootstrap.min.css',
             'css/desugaala.css',
         ),
         'output_filename': 'css/desugaala.css'
