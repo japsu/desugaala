@@ -4,3 +4,6 @@
 build/
 nohup.out
 pip-log.txt
+node_modules/
+bower_components/
+virtualenv/

@@ -1,0 +1,23 @@
+{
+  "name": "desugaala",
+  "version": "0.0.0",
+  "homepage": "https://github.com/japsu/desugaala",
+  "authors": [
+    "Santtu Pajukanta <santtu@pajukanta.fi>"
+  ],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bacon": "~0.6.22",
+    "bootstrap": "~3.0.3",
+    "jquery": "~1.10.2",
+    "jqueryui": "~1.10.3"
+  }
+}

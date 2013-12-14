@@ -1,0 +1,27 @@
+{
+  "name": "desugaala",
+  "version": "0.0.0",
+  "description": "A web app for voting stuff. Will be used to select the winners in DesuGaala 2012.",
+  "main": "index.js",
+  "directories": {
+    "doc": "doc"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/japsu/desugaala"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/japsu/desugaala/issues"
+  },
+  "devDependencies": {
+    "yuglify": "~0.1.4",
+    "coffee-script": "~1.6.3",
+    "stylus": "~0.41.3",
+    "bower": "~1.2.8"
+  }
+}
