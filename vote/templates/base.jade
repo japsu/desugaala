@@ -18,17 +18,18 @@ html
         })();
 
   body
-    div.navbar.navbar-inverse.navbar-fixed-top
-      div.navbar-inner
-        div.container
-          span.brand DesuGaala 2012   
-          ul.nav
+    .navbar.navbar-inverse.navbar-fixed-top
+      .navbar-inner
+        .container
+          span.navbar-brand DesuGaala 2012   
+          ul.nav.navbar-nav
             li: a(href='http://desucon.fi/frostbite') Takaisin Desucon Frostbiten sivuille
     
-    div.container.content
+    .content
       block content
 
-    div.container.footer
+    .container.footer
+      hr
       p.muted.credit
         | Kehittyvien conien Suomi ry 2013 &middot; Toteuttanut
         a(href="http://twitter.com/ssspaju", target="_blank") Santtu "Japsu" Pajukanta

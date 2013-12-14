@@ -19,6 +19,7 @@
     "bootstrap": "~3.0.3",
     "jquery": "~1.10.2",
     "jqueryui": "~1.10.3",
-    "bacon.jquery": "~0.4.0"
+    "bacon.jquery": "~0.4.0",
+    "lodash": "~2.4.1"
   }
 }

@@ -1,101 +1,101 @@
 extends base.jade
 
 block content
-  .hero-unit.desugaala-banner
-    h1 DesuGaala 2012
-    p Viime kerralla Frostbitessä nähtiin ensimmäistä kertaa "animeskenen vuosijuhla", DesuGaala, jossa jaettiin palkintoja animevuoden 2011 tärkeille ansioille. Nyt DesuGaala palaa Desucon Frostbiteen ja kaikilla on oikeus ja suorastaan velvollisuus äänestää! Desucon Frostbiteen ei tarvitse päästä, kunhan suosikkeja riittää ja niille haluaa antaa äänensä.
-    p DesuGaalassa 2012 palkintoja jaetaan seuraavissa sarjoissa:
-    ul
-      li Vuoden tapahtuma
-      li Vuoden kotimainen mangajulkaisu
-      li Vuoden kunniavieras
-      li Vuoden skeneilmiö
-      li Vuoden puheohjelma
-      li Vuoden cosplay
+  .jumbotron.desugaala-banner
+    .container
+      h1 DesuGaala 2012
+      p Viime kerralla Frostbitessä nähtiin ensimmäistä kertaa "animeskenen vuosijuhla", DesuGaala, jossa jaettiin palkintoja animevuoden 2011 tärkeille ansioille. Nyt DesuGaala palaa Desucon Frostbiteen ja kaikilla on oikeus ja suorastaan velvollisuus äänestää! Desucon Frostbiteen ei tarvitse päästä, kunhan suosikkeja riittää ja niille haluaa antaa äänensä.
+      p DesuGaalassa 2012 palkintoja jaetaan seuraavissa sarjoissa:
+      ul
+        li Vuoden tapahtuma
+        li Vuoden kotimainen mangajulkaisu
+        li Vuoden kunniavieras
+        li Vuoden skeneilmiö
+        li Vuoden puheohjelma
+        li Vuoden cosplay
 
-  if DEMO_MODE
-    .hero-unit
-      h2 Äänestys ei vielä ole käynnissä!
-      p Tämä on vasta keskeneräinen versio äänestysjärjestelmästä.
-      p
-        | Voit kokeilla äänestystä käyttäjätunnuksella
-        tt desu
-        |  ja salasanalla 
-        tt salainen
-        | .
-      p 
-        | Jos haluat nähdä, mitä tapahtuu kun yrittää äänestää tunnuksella joka on jo äänestänyt, kokeile äänestää käyttäjätunnuksella
-        tt onjo
-        |  ja salasanalla 
-        tt aanestetty
-        | .
+  .container
+    if DEMO_MODE
+      .well
+        h2 Äänestys ei vielä ole käynnissä!
+        p Tämä on vasta keskeneräinen versio äänestysjärjestelmästä.
+        p
+          | Voit kokeilla äänestystä käyttäjätunnuksella
+          tt desu
+          |  ja salasanalla 
+          tt salainen
+          | .
+        p 
+          | Jos haluat nähdä, mitä tapahtuu kun yrittää äänestää tunnuksella joka on jo äänestänyt, kokeile äänestää käyttäjätunnuksella
+          tt onjo
+          |  ja salasanalla 
+          tt aanestetty
+          | .
 
-  #vote-page
-    // hack for scrolling
-    #login
+    #vote-page
+      // hack for scrolling
+      #login
 
-    .hero-unit
-      h2 Kirjaudu sisään Anikin foorumitunnuksellasi!
-      p
-        | Äänestämiseen tarvitset tunnuksen
-        a(href='http://forums.aniki.fi', target='_blank') Anikin foorumeille
-        | .
+      .well
+        h2 Kirjaudu sisään Anikin foorumitunnuksellasi!
+        p
+          | Äänestämiseen tarvitset tunnuksen
+          a(href='http://forums.aniki.fi', target='_blank') Anikin foorumeille
+          | .
 
-      #login-form
-        div {{ login_form }}
-        button.btn.btn-large.btn-primary#login-button Kirjaudu sisään
+        include login_form.html
 
-      .already-voted.error
-        i.icon-warning-sign
-        |  Olet jo äänestänyt.
+        .already-voted.error
+          i.icon-warning-sign
+          |  Olet jo äänestänyt.
 
-      .login-failed.error
-        i.icon-warning-sign
-        |  Sisäänkirjautuminen epäonnistui. Tarkista käyttäjätunnus ja salasana.
+        .login-failed.error
+          i.icon-warning-sign
+          |  Sisäänkirjautuminen epäonnistui. Tarkista käyttäjätunnus ja salasana.
 
-      .login-ok.triumph
-        i.icon-ok
-        |  Sisäänkirjautuminen onnistui. Voit nyt antaa äänesi alla.
+        .login-ok.triumph
+          i.icon-ok
+          |  Sisäänkirjautuminen onnistui. Voit nyt antaa äänesi alla.
 
-    .hero-unit
-      h2 Anna äänesi!
-      p Vedä suosikkisi hiirellä mieleiseesi paremmuusjärjestykseen &ndash; mieluisin ylimmäksi! Voit äänestää niin montaa ehdokasta kuin haluat. Jätä pohjalle punaisen viivan alle ne ehdokkaat, joita et halua äänestää.
-      p.muted.small
-        | Äänet lasketaan 
-        a(href="http://en.wikipedia.org/wiki/Schulze_method") Schulzen menetelmällä
-        | .
+      .well
+        h2 Anna äänesi!
+        p Vedä suosikkisi hiirellä mieleiseesi paremmuusjärjestykseen &ndash; mieluisin ylimmäksi! Voit äänestää niin montaa ehdokasta kuin haluat. Jätä pohjalle punaisen viivan alle ne ehdokkaat, joita et halua äänestää.
+        p.muted.small
+          | Äänet lasketaan 
+          a(href="http://en.wikipedia.org/wiki/Schulze_method") Schulzen menetelmällä
+          | .
 
-    for category, options in categories_options
-      .hero-unit.category-wrap {{ category.render }}
-    
-    .hero-unit
-      h2 Lähetä
+      for category, options in categories_options
+        .well.category-wrap {{ category.render }}
+      
+      .well
+        h2 Lähetä
 
-      p Tässä olivat kaikki sarjat! Lähetä äänesi painamalla Lähetä-painiketta.
+        p Tässä olivat kaikki sarjat! Lähetä äänesi painamalla Lähetä-painiketta.
 
-      #not-logged-in.error
-        i.icon-warning-sign
-        |  Et ole vielä kirjautunut sisään.
-        a(href='#login') Kirjaudu sisään
+        #not-logged-in.error
+          i.icon-warning-sign
+          |  Et ole vielä kirjautunut sisään.
+          a(href='#login') Kirjaudu sisään
 
-      .already-voted.error
-        i.icon-warning-sign
-        |  Olet jo äänestänyt.
+        .already-voted.error
+          i.icon-warning-sign
+          |  Olet jo äänestänyt.
 
-      button.btn.btn-large.btn-primary#send-button Lähetä
+        button.btn.btn-large.btn-primary#send-button Lähetä
 
-  #thanks-page
-    .hero-unit
-      h2 Kiitos äänestäsi!
-      p Äänesi on otettu vastaan. Kiitos äänestäsi!
-      p Tulokset julkistetaan DesuGaalassa Desucon Frostbitessä 16. helmikuuta 2013.
+    #thanks-page
+      .well
+        h2 Kiitos äänestäsi!
+        p Äänesi on otettu vastaan. Kiitos äänestäsi!
+        p Tulokset julkistetaan DesuGaalassa Desucon Frostbitessä 16. helmikuuta 2013.
 
-  #oops-page
-    .hero-unit
-      h2 Voi rähmä!
-      p Jotain meni pieleen eikä ääntäsi valitettavasti saatu tällä kertaa rekisteröityä!
-      p Yritäthän myöhemmin uudelleen.
-      p 
-        | Jos virhe toistuu, voit vaikka tweetata hellästi mutta äkäisesti
-        a(href='https://twitter.com/ssspaju', target='_blank') Japsulle
-        | .
+    #oops-page
+      .well
+        h2 Voi rähmä!
+        p Jotain meni pieleen eikä ääntäsi valitettavasti saatu tällä kertaa rekisteröityä!
+        p Yritäthän myöhemmin uudelleen.
+        p 
+          | Jos virhe toistuu, voit vaikka tweetata hellästi mutta äkäisesti
+          a(href='https://twitter.com/ssspaju', target='_blank') Japsulle
+          | .

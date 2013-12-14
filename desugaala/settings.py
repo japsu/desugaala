@@ -125,6 +125,7 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'django.contrib.admin',
 
+    'crispy_forms',
     'pipeline',
     'gunicorn',
     'south',
@@ -149,6 +150,7 @@ PIPELINE_JS = {
             'jqueryui/ui/minified/jquery.ui.mouse.min.js',
             'jqueryui/ui/minified/jquery.ui.sortable.min.js',
             'jqueryui/ui/minified/jquery.ui.draggable.min.js',
+            'lodash/dist/lodash.min.js',
             'bacon/dist/Bacon.min.js',
             'bacon.jquery/dist/bacon.jquery.min.js',
             'bootstrap/dist/js/bootstrap.min.js',
@@ -209,3 +211,4 @@ PHPBB_AUTH_DB_PARAM_STYLE = "%s"
 PHPBB_AUTH_DB_USERS_TABLE = "users"
 
 GOOGLE_ANALYTICS_TOKEN = '0000000-0'
+CRISPY_TEMPLATE_PACK = 'bootstrap3'
