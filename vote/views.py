@@ -6,12 +6,14 @@ from django.conf import settings
 from django.shortcuts import render
 from django.views.decorators.csrf import ensure_csrf_cookie
 from django.utils.timezone import utc
+from django.template.loader import render_to_string
 
 from .models import Category, Option, Ballot, BallotCategory, BallotOption, AlreadyVoted
 from .forms import LoginForm
 from .helpers import json_rest, throttle_post
 
 DEMO_MODE = getattr(settings, 'DEMO_MODE', False)
+DESUGAALA_TEMPLATE_PACK = getattr(settings, 'DESUGAALA_TEMPLATE_PACK', 'desugaala')
 
 def _fake_perform_checks(func):
   @wraps(func)
@@ -62,6 +64,14 @@ def handle_errors(func):
   # XXX stub
   return func
 
+def render_from_pack_to_string(template_name, *args, **kwargs):
+  template_name = "{pack}/{template_name}".format(
+    pack=DESUGAALA_TEMPLATE_PACK,
+    template_name=template_name
+  )
+
+  return render_to_string(template_name, *args, **kwargs)
+
 @ensure_csrf_cookie
 def vote_page(request):
     categories = Category.objects.all()
@@ -74,7 +84,12 @@ def vote_page(request):
     vars = dict(
       categories_options=zip(categories, options),
       login_form=LoginForm(),
+      jumbotron=render_from_pack_to_string('jumbotron.jade'),
+      header=render_from_pack_to_string('header.jade'),
+      credit=render_from_pack_to_string('credit.jade'),
+      thanks=render_from_pack_to_string('thanks.jade'),
       DEMO_MODE=DEMO_MODE,
+      DESUGAALA_TEMPLATE_PACK=DESUGAALA_TEMPLATE_PACK,
       GOOGLE_ANALYTICS_TOKEN=getattr(settings, 'GOOGLE_ANALYTICS_TOKEN', '')
     )
 

@@ -1,18 +1,8 @@
 extends base.jade
 
 block content
-  .jumbotron.desugaala-banner
-    .container
-      h1 DesuGaala 2012
-      p Viime kerralla Frostbitessä nähtiin ensimmäistä kertaa "animeskenen vuosijuhla", DesuGaala, jossa jaettiin palkintoja animevuoden 2011 tärkeille ansioille. Nyt DesuGaala palaa Desucon Frostbiteen ja kaikilla on oikeus ja suorastaan velvollisuus äänestää! Desucon Frostbiteen ei tarvitse päästä, kunhan suosikkeja riittää ja niille haluaa antaa äänensä.
-      p DesuGaalassa 2012 palkintoja jaetaan seuraavissa sarjoissa:
-      ul
-        li Vuoden tapahtuma
-        li Vuoden kotimainen mangajulkaisu
-        li Vuoden kunniavieras
-        li Vuoden skeneilmiö
-        li Vuoden puheohjelma
-        li Vuoden cosplay
+  .jumbotron(class="{{ DESUGAALA_TEMPLATE_PACK }}-banner")
+    .container {{ jumbotron|safe }}
 
   .container
     if DEMO_MODE
@@ -85,10 +75,7 @@ block content
         button.btn.btn-large.btn-primary#send-button Lähetä
 
     #thanks-page
-      .well
-        h2 Kiitos äänestäsi!
-        p Äänesi on otettu vastaan. Kiitos äänestäsi!
-        p Tulokset julkistetaan DesuGaalassa Desucon Frostbitessä 16. helmikuuta 2013.
+      .well {{ thanks|safe }}
 
     #oops-page
       .well

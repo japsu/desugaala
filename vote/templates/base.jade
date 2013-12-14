@@ -1,7 +1,7 @@
 doctype 5
 html
   head
-    title DesuGaala 2012
+    title Äänestyskala
     script
       window.desugaalaCsrfToken='{{ csrf_token }}';
     include assets.html
@@ -21,17 +21,11 @@ html
     .navbar.navbar-inverse.navbar-fixed-top
       .navbar-inner
         .container
-          span.navbar-brand DesuGaala 2012   
-          ul.nav.navbar-nav
-            li: a(href='http://desucon.fi/frostbite') Takaisin Desucon Frostbiten sivuille
+          {{ header|safe }}
     
     .content
       block content
 
     .container.footer
       hr
-      p.muted.credit
-        | Kehittyvien conien Suomi ry 2013 &middot; Toteuttanut
-        a(href="http://twitter.com/ssspaju", target="_blank") Santtu "Japsu" Pajukanta
-        |  &middot; Yhteistyössä
-        a(href="http://b2.fi") Säätöyhteisö B2 ry
+      {{ credit|safe }}
